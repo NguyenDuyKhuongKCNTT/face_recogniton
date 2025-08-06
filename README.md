@@ -1,1 +1,9 @@
-# face_recogniton
+## Cách chạy
+1. Cài đặt thư viện cần thiết: `pip install pandas numpy scikit-learn`
+2. Chạy file `face_recog.py`
+3. Xem kết quả phát hiện
+
+## Kết quả mong đợi
+Chương trình sẽ hiển thị:
+- phát hiện dữ liệu thô
+- Nhận diện khuôn mặt
