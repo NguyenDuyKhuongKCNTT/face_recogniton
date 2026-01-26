@@ -1,6 +1,0 @@
-numpy
-opencv-python
-deepface
-tf-keras
-mediapipe
-norfair
