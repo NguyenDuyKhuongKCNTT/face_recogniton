@@ -1,88 +1,92 @@
-# 📸 Real-Time Face Recognition System
+========================================================================
+       EIGENFACE MASTER - HỆ THỐNG NHẬN DẠNG KHUÔN MẶT TỐC ĐỘ CAO
+========================================================================
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![DeepFace](https://img.shields.io/badge/AI-DeepFace-orange)
-![MediaPipe](https://img.shields.io/badge/Detection-MediaPipe-green)
-![Norfair](https://img.shields.io/badge/Tracking-Norfair-red)
+Dựa trên thuật toán: Eigenfaces (Turk & Pentland) & Sách Computer Vision (Szeliski)
+Ngôn ngữ: Python + OpenCV
 
-Hệ thống nhận diện khuôn mặt thời gian thực (Real-time) được xây dựng bằng Python. Dự án kết hợp sức mạnh của **MediaPipe** (tốc độ phát hiện cao), **DeepFace** (nhận diện chính xác) và **Norfair** (theo dõi đối tượng ổn định).
+[ TÍNH NĂNG CHÍNH ]
+1. Nhanh & Nhẹ: Chạy mượt trên mọi laptop, không cần Card đồ họa rời.
+2. Tự động cắt mặt: Chỉ cần bỏ ảnh chụp vào, máy tự tìm mặt để học.
+3. Học lại (Retrain) tức thì: Bấm 1 phím là cập nhật người mới.
+4. Lưu Model: Không mất thời gian học lại mỗi lần mở máy.
 
-## 🚀 Tính năng nổi bật
+========================================================================
+                               CÀI ĐẶT
+========================================================================
 
-* **Tốc độ cao:** Sử dụng MediaPipe để phát hiện khuôn mặt, hoạt động mượt mà trên CPU (không cần GPU rời).
-* **Ổn định (Anti-Flicker):** Tích hợp thuật toán Tracking (Norfair) giúp gán ID cho từng người, tránh hiện tượng tên bị nhấp nháy hoặc mất dấu khi quay mặt.
-* **Đa luồng (Multi-threading):** Quá trình nhận diện AI chạy song song với luồng hiển thị Video, giúp FPS luôn ổn định, không bị giật lag.
-* **Dễ dàng cài đặt:** Không yêu cầu C++ Build Tools phức tạp, chỉ cần Python thuần.
+Bước 1: Cài đặt Python (nếu chưa có).
 
-## 🛠️ Công nghệ sử dụng
+Bước 2: Mở Terminal (CMD) và chạy lệnh sau để cài thư viện:
+   pip install opencv-python numpy pillow
 
-| Thành phần | Công nghệ / Thư viện | Vai trò |
-| :--- | :--- | :--- |
-| **Language** | Python | Ngôn ngữ lập trình chính |
-| **Detector** | MediaPipe | Phát hiện vị trí khuôn mặt trong khung hình |
-| **Recognizer** | DeepFace (VGG-Face) | Trích xuất đặc trưng và so khớp khuôn mặt |
-| **Tracker** | Norfair | Theo dõi vị trí (ID) của khuôn mặt qua các frame |
-| **Interface** | OpenCV | Xử lý hình ảnh và hiển thị Webcam |
+========================================================================
+                          CẤU TRÚC THƯ MỤC
+========================================================================
+Để phần mềm chạy đúng, bạn hãy sắp xếp thư mục y hệt như sau:
 
-## 📂 Cấu trúc dự án
+Thu_muc_du_an/
+  |
+  +-- final_face_rec.py       (File code chính)
+  +-- HUONG_DAN_SU_DUNG.txt   (File này)
+  |
+  +-- dataset/                (THƯ MỤC QUAN TRỌNG NHẤT)
+       |
+       +-- Nguyen_Van_A/      (Tạo thư mục tên người muốn nhận dạng)
+       |     +-- anh1.jpg
+       |     +-- anh2.png
+       |
+       +-- Tran_Thi_B/
+             +-- hinh_chup.jpg
+             +-- ...
 
-```text
-Face-Recognition-System/
-├── db/                     # Cơ sở dữ liệu ảnh khuôn mặt
-│   ├── Person_Name_1/      # Thư mục chứa ảnh của người 1
-│   │   ├── img1.jpg
-│   │   └── img2.jpg
-│   ├── Person_Name_2/      # Thư mục chứa ảnh của người 2
-│   └── ...
-├── main.py                 # Mã nguồn chính của chương trình
-├── requirements.txt        # Danh sách các thư viện cần thiết
-└── README.md               # Tài liệu hướng dẫn
-⚙️ Hướng dẫn cài đặt
-1. Yêu cầu tiên quyết
-Python 3.8 hoặc mới hơn.
+========================================================================
+                          HƯỚNG DẪN SỬ DỤNG
+========================================================================
 
-Webcam.
+--- BƯỚC 1: CHUẨN BỊ ẢNH ---
+- Vào thư mục "dataset".
+- Tạo thư mục tên bạn (ví dụ: "Duy_Khuong").
+- Chép khoảng 10-20 tấm ảnh rõ mặt vào đó.
+- Lời khuyên: Nên chọn ảnh có ánh sáng khác nhau (sáng, tối, ngược sáng) để máy học giỏi hơn.
 
-2. Cài đặt thư viện
-Mở Terminal tại thư mục dự án và chạy lệnh sau để cài đặt tất cả các thư viện phụ thuộc:
+--- BƯỚC 2: CHẠY CHƯƠNG TRÌNH ---
+- Mở Terminal/CMD tại thư mục dự án.
+- Gõ lệnh: 
+     python final_face_rec.py
 
-Bash
+* Lần đầu chạy: Máy sẽ mất vài giây để quét ảnh và tạo file "face_model.npz".
+* Các lần sau: Máy bật Camera lên ngay lập tức.
 
-pip install -r requirements.txt
-Nội dung file requirements.txt:
+--- BƯỚC 3: ĐIỀU KHIỂN KHI ĐANG CHẠY ---
+Khi cửa sổ Camera hiện lên, bạn dùng bàn phím để điều khiển:
 
-Plaintext
+[ q ] -> Thoát chương trình.
 
-numpy
-opencv-python
-deepface
-tf-keras
-mediapipe
-norfair
-🖥️ Hướng dẫn sử dụng
-Bước 1: Chuẩn bị dữ liệu
-Tạo các thư mục con trong thư mục db/ tương ứng với tên của người cần nhận diện. Chép hình ảnh chân dung (rõ mặt) vào các thư mục đó.
+[ r ] -> Học lại (Retrain): Bấm phím này sau khi bạn vừa copy thêm ảnh mới vào folder.
 
-Ví dụ:
+[ u ] -> Tăng ngưỡng nhận dạng (Up): 
+         Dùng khi máy cứ báo "Unknown" dù đó là người quen.
+         
+[ d ] -> Giảm ngưỡng nhận dạng (Down):
+         Dùng khi máy nhận nhầm người lạ thành người quen.
 
-db/NguyenVanA/anh1.jpg
+========================================================================
+                       GIẢI QUYẾT LỖI THƯỜNG GẶP
+========================================================================
 
-db/LeThiB/anh_chan_dung.png
+1. Máy không hiện khung xanh quanh mặt?
+   -> Kiểm tra ánh sáng (đừng ngồi ngược sáng).
+   -> Tháo kính râm/khẩu trang.
+   -> Ngồi cách camera khoảng 50-70cm.
 
-Bước 2: Chạy chương trình
-Chạy lệnh sau trong Terminal:
+2. Máy hiện khung xanh nhưng tên là "Unknown"?
+   -> Bấm phím 'u' vài lần để tăng độ nhạy.
+   -> Hoặc chụp thêm ảnh tại chỗ rồi bấm 'r' để máy học lại.
 
-Bash
+3. Máy nhận nhầm người lạ?
+   -> Bấm phím 'd' để giảm độ nhạy xuống.
 
-python main.py
-Bước 3: Trải nghiệm
-Hệ thống sẽ tự động bật Webcam.
-
-Lần chạy đầu tiên có thể mất vài phút để tải Model (VGG-Face).
-
-Nhấn phím 'q' để thoát chương trình.
-
-🤝 Đóng góp
-Dự án được xây dựng với mục đích học tập và nghiên cứu. Mọi đóng góp (Pull Requests) để cải thiện hiệu năng hoặc thêm tính năng mới (như Liveness Detection) đều được hoan nghênh.
-
-Author: [Nhóm 2 Thị Giác Máy Tính - Nguyễn Duy Khương - Hồ Viết Sơn Tùng - Đỗ Thị Ngọc Mai - Bùi Thảo Ly - Trần Ngọc Minh]
+========================================================================
+                       CHÚC BẠN THÀNH CÔNG!
+========================================================================
