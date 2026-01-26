@@ -1,45 +1,47 @@
-========================================================================
-       EIGENFACE MASTER - HỆ THỐNG NHẬN DẠNG KHUÔN MẶT TỐC ĐỘ CAO
-========================================================================
+# 📸 EigenFace Master: Hệ Thống Nhận Dạng Khuôn Mặt Tốc Độ Cao
 
-Dựa trên thuật toán: Eigenfaces (Turk & Pentland) & Sách Computer Vision (Szeliski)
-Ngôn ngữ: Python + OpenCV
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-green.svg)
+![Algorithm](https://img.shields.io/badge/Algorithm-PCA%20%2F%20Eigenfaces-orange.svg)
 
-[ TÍNH NĂNG CHÍNH ]
-1. Nhanh & Nhẹ: Chạy mượt trên mọi laptop, không cần Card đồ họa rời.
-2. Tự động cắt mặt: Chỉ cần bỏ ảnh chụp vào, máy tự tìm mặt để học.
-3. Học lại (Retrain) tức thì: Bấm 1 phím là cập nhật người mới.
-4. Lưu Model: Không mất thời gian học lại mỗi lần mở máy.
+> **"Nhận dạng khuôn mặt nhanh, nhẹ và hiệu quả dựa trên thuật toán kinh điển."**
 
-========================================================================
-                               CÀI ĐẶT
-========================================================================
+Dự án này là một triển khai thực tế của thuật toán **Eigenfaces** (Sử dụng phân tích thành phần chính - PCA) để nhận dạng khuôn mặt qua Webcam. Chương trình được xây dựng dựa trên nền tảng lý thuyết từ hai tài liệu khoa học nổi tiếng:
+1.  📄 *Face Recognition Using Eigenfaces* (Turk & Pentland).
+2.  📚 *Computer Vision: Algorithms and Applications* (Richard Szeliski).
 
-Bước 1: Cài đặt Python (nếu chưa có).
+---
 
-Bước 2: Mở Terminal (CMD) và chạy lệnh sau để cài thư viện:
-   pip install opencv-python numpy pillow
+## 🌟 Tính Năng Nổi Bật
 
-========================================================================
-                          CẤU TRÚC THƯ MỤC
-========================================================================
-Để phần mềm chạy đúng, bạn hãy sắp xếp thư mục y hệt như sau:
+* **🚀 Siêu Nhẹ & Nhanh:** Không cần GPU rời, chạy mượt mà trên cả laptop cũ nhờ tối ưu hóa thuật toán PCA và xử lý ảnh nhỏ (Scale Down).
+* **🧠 Học Tự Động (Auto-Train):** Tự động phát hiện ảnh mới trong thư mục và huấn luyện lại mô hình chỉ trong vài giây.
+* **✂️ Tự Động Cắt Mặt (Smart Crop):** Bạn chỉ cần vứt ảnh chụp vào, hệ thống tự động tìm khuôn mặt, cắt, căn chỉnh và cân bằng sáng.
+* **💾 Lưu Trữ Mô Hình:** Không mất thời gian train lại mỗi lần khởi động.
+* **🎛️ Tinh Chỉnh Real-time:** Điều chỉnh độ nhạy (Threshold) ngay khi đang chạy camera.
 
-Thu_muc_du_an/
-  |
-  +-- final_face_rec.py       (File code chính)
-  +-- HUONG_DAN_SU_DUNG.txt   (File này)
-  |
-  +-- dataset/                (THƯ MỤC QUAN TRỌNG NHẤT)
-       |
-       +-- Nguyen_Van_A/      (Tạo thư mục tên người muốn nhận dạng)
-       |     +-- anh1.jpg
-       |     +-- anh2.png
-       |
-       +-- Tran_Thi_B/
-             +-- hinh_chup.jpg
-             +-- ...
+---
 
+## 🛠️ Cài Đặt
+
+Chỉ cần cài đặt 3 thư viện Python cơ bản. Mở Terminal hoặc Command Prompt và chạy:
+
+```bash
+pip install opencv-python numpy pillow
+📂 Cấu Trúc Thư MụcĐể chương trình chạy đúng, hãy sắp xếp thư mục của bạn như sau:PlaintextMyFaceProject/
+│
+├── final_face_rec.py      # <--- File code chính
+├── README.md              # <--- File hướng dẫn này
+│
+└── dataset/               # <--- Thư mục chứa ảnh huấn luyện
+    ├── Nguyen_Van_A/      # Tên người thứ 1 (Viết liền, không dấu)
+    │   ├── img1.jpg
+    │   ├── img2.png
+    │   └── ...
+    ├── Tran_Thi_B/        # Tên người thứ 2
+    │   ├── selfie.jpg
+    │   └── ...
+    └── ...
 ========================================================================
                           HƯỚNG DẪN SỬ DỤNG
 ========================================================================
@@ -86,6 +88,14 @@ Khi cửa sổ Camera hiện lên, bạn dùng bàn phím để điều khiển:
 
 3. Máy nhận nhầm người lạ?
    -> Bấm phím 'd' để giảm độ nhạy xuống.
+
+👨‍💻 Tác Giả
+   Nguyễn Duy Khương
+   Hồ Viết Sơn Tùng
+   Bùi Thảo Ly
+   Trần Ngọc Minh
+   Đỗ Thị Ngọc Mai
+Mã nguồn mở và miễn phí sử dụng cho mục đích học tập.
 
 ========================================================================
                        CHÚC BẠN THÀNH CÔNG!
