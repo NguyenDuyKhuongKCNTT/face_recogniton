@@ -30,8 +30,9 @@ Chỉ cần cài đặt 3 thư viện Python cơ bản. Mở Terminal hoặc Com
 pip install opencv-python numpy pillow
 📂 Cấu Trúc Thư MụcĐể chương trình chạy đúng, hãy sắp xếp thư mục của bạn như sau:PlaintextMyFaceProject/
 │
-├── final_face_rec.py      # <--- File code chính
-├── README.md              # <--- File hướng dẫn này
+├── facerecognition.py  # <--- File code chính
+├── augment_data.py     # <--- File tạo ảnh từ ảnh gốc: lật, thêm sáng, tối, nhiễu hạt
+├── README.md         # <--- File hướng dẫn này
 │
 └── dataset/               # <--- Thư mục chứa ảnh huấn luyện
     ├── Nguyen_Van_A/      # Tên người thứ 1 (Viết liền, không dấu)
@@ -55,7 +56,10 @@ pip install opencv-python numpy pillow
 --- BƯỚC 2: CHẠY CHƯƠNG TRÌNH ---
 - Mở Terminal/CMD tại thư mục dự án.
 - Gõ lệnh: 
-     python final_face_rec.py
+     python augment_data.py
+* Chương trình sẽ tạo sinh các ảnh từ ảnh gốc: thêm sáng, chỉnh tối, nhiễu hạt.
+
+     python facerecognition.py
 
 * Lần đầu chạy: Máy sẽ mất vài giây để quét ảnh và tạo file "face_model.npz".
 * Các lần sau: Máy bật Camera lên ngay lập tức.
